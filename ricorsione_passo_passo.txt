@@ -1,0 +1,230 @@
+PASSAGGIO 1 ---> 
+
+   def searchPath(self, t):
+
+        for n in self.get_nodes():
+            partial = []
+            partial_edges = []
+
+            partial.append(A)
+            self.ricorsione(partial, partial_edges, t)
+
+        print("final", len(self.solBest), [i[2]["weight"] for i in self.solBest])
+
+    def ricorsione(self, A, null , t):
+        n_last = A
+        neigh = self.getAdmissibleNeighbs(A, null, t)
+		ENTRO IN LEN = 0
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(weight_path)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+		MA NON SUCCEDE NULLA
+
+        for n in neigh:
+            partial.append(n)
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))
+            self.ricorsione(partial, partial_edges, t)
+            partial.pop()
+            partial_edges.pop()
+		ESCO DA RICORSIONE
+
+PASSAGGIO 1 -->
+
+    def searchPath(self, t):
+
+        for n in self.get_nodes():
+            partial = []				
+            partial_edges = []
+
+            partial.append(n)								PARTIAL= A
+            self.ricorsione(partial, partial_edges, t)
+
+        print("final", len(self.solBest), [i[2]["weight"] for i in self.solBest])
+
+    def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =A
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = B D E
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B 
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B
+            self.ricorsione(partial, partial_edges, t) 		***
+            partial.pop()
+            partial_edges.pop()
+
+
+PASSAGGIO 3 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =B
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = C
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C
+            self.ricorsione(partial, partial_edges, t)		***
+            partial.pop()
+            partial_edges.pop()
+
+PASSAGGIO 4 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =C
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = D H G
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C D
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C C-D
+            self.ricorsione(partial, partial_edges, t)		***
+            partial.pop()
+            partial_edges.pop()
+
+PASSAGGIO 5 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =D
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = A E 
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C D A
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C C-D D-A
+            self.ricorsione(partial, partial_edges, t)		***
+            partial.pop()
+            partial_edges.pop()
+
+PASSAGGIO 6 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =A
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = E F D 
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C D A E
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C C-D D-A A-E
+            self.ricorsione(partial, partial_edges, t)		***
+            partial.pop()
+            partial_edges.pop()
+
+PASSAGGIO 7 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =E
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = D
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C D A E D
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C C-D D-A A-E E-D
+            self.ricorsione(partial, partial_edges, t)		***
+            partial.pop()
+            partial_edges.pop()
+
+
+PASSAGGIO 8 ---> RICHIAMO RICORSIONE***
+
+def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]  								N LAST =D
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)			NEIGH = 0
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)				WP=35
+            weight_path_best = self.computeWeightPath(self.solBest)			WPB=35
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return 						***
+
+        for n in neigh:
+            partial.append(n)								PARTIAL = A B C D A E D
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))	PARTIAL EDGE = A-B B-C C-D D-A A-E E-D
+            self.ricorsione(partial, partial_edges, t)		
+            partial.pop()
+            partial_edges.pop()
+
+PASSAGGIO 9 ---> RITORNO A SEARCHPATH***
+
+    def searchPath(self, t):
+
+        for n in self.get_nodes():
+            partial = []    								
+            partial_edges = []
+
+            partial.append(n)
+            self.ricorsione(partial, partial_edges, t)
+
+        print("final", len(self.solBest), [i[2]["weight"] for i in self.solBest])
+
+    def ricorsione(self, partial, partial_edges, t):
+        n_last = partial[-1]
+        neigh = self.getAdmissibleNeighbs(n_last, partial_edges, t)
+
+        # stop
+        if len(neigh) == 0:
+            weight_path = self.computeWeightPath(partial_edges)
+            weight_path_best = self.computeWeightPath(self.solBest)
+            if weight_path > weight_path_best:
+                self.solBest = partial_edges[:]
+            return
+
+        for n in neigh:
+            partial.append(n)
+            partial_edges.append((n_last, n, self.graph.get_edge_data(n_last, n)))
+            self.ricorsione(partial, partial_edges, t)
+            partial.pop()
+            partial_edges.pop()
+
+
+
+
+
